@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Scan staged text files for common credential/token patterns.
+PATTERN='(ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z\-_]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN[[:space:]]+[^-]+PRIVATE KEY-----|Bearer[[:space:]]+[A-Za-z0-9._\-]{20,}|Authorization:[[:space:]]*Basic[[:space:]]+[A-Za-z0-9+/=]{20,})'
+
+files="$(git diff --cached --name-only --diff-filter=ACMR)"
+[ -z "$files" ] && exit 0
+
+for f in $files; do
+  [ ! -f "$f" ] && continue
+
+  # Skip obvious binary assets.
+  case "$f" in
+    *.png|*.jpg|*.jpeg|*.gif|*.webp|*.ico|*.pdf|*.zip|*.exe|*.dll|*.bin|*.woff|*.woff2|*.ttf|*.eot|*.mp3|*.wav|*.flac|*.ogg|*.m4a)
+      continue
+      ;;
+  esac
+
+  if grep -nE "$PATTERN" "$f" >/dev/null 2>&1; then
+    echo "Blocked commit: possible secret detected in $f"
+    grep -nE "$PATTERN" "$f" || true
+    echo "Remove sensitive values and commit again."
+    exit 1
+  fi
+done
+
+exit 0
