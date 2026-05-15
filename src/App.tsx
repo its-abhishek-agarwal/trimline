@@ -17,8 +17,8 @@ type EditableRegion = { start: number; end: number; setOptions: (options: { star
 const PRODUCT_NAME = 'Trimline'
 const NUDGE_STEP = 0.1
 const DOT_COUNT = 40
-const KOFI_URL = '#ko-fi'
-const RAZORPAY_URL = '#razorpay'
+const KOFI_URL = 'https://ko-fi.com/hiabhishek'
+const RAZORPAY_URL = 'https://razorpay.me/@hi_abhishek'
 
 const EXPORT_OPTIONS = [
   { value: 'same', label: 'Same as source' },
