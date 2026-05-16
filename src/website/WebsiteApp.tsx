@@ -46,8 +46,9 @@ const features = [
 
 const installNotes = [
   {
-    label: 'Windows 10 / 11',
-    detail: 'Built for Windows 10 and Windows 11 desktop systems.',
+    label: 'Installation warning',
+    detail:
+      'If Windows blocks install, right-click the downloaded file -> Properties -> check Unblock -> Apply -> then run installer again.',
   },
   {
     label: 'FFmpeg bundled',
@@ -58,8 +59,8 @@ const installNotes = [
     detail: 'If WebView2 is missing, setup can fetch it once during installation.',
   },
   {
-    label: 'SmartScreen note',
-    detail: 'Unsigned builds can show a SmartScreen prompt until the app is code-signed.',
+    label: 'Windows 10 / 11',
+    detail: 'Built for Windows 10 and Windows 11 desktop systems.',
   },
 ]
 
