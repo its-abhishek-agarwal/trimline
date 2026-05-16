@@ -53,6 +53,7 @@ jobs:
           cp dist/favicon.svg pages-site/favicon.svg
           cp dist/robots.txt pages-site/robots.txt
           cp dist/sitemap.xml pages-site/sitemap.xml
+          cp dist/google*.html pages-site/ 2>/dev/null || true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
