@@ -115,8 +115,35 @@ fn executable_name(name: &str) -> String {
 }
 
 fn bundled_tool_path(app: &tauri::AppHandle, tool_name: &str) -> Option<PathBuf> {
-    let relative = format!("bin/{}", executable_name(tool_name));
-    app.path().resolve(&relative, BaseDirectory::Resource).ok()
+    bundled_tool_candidates(app, tool_name)
+        .into_iter()
+        .find(|p| p.exists())
+}
+
+fn bundled_tool_candidates(app: &tauri::AppHandle, tool_name: &str) -> Vec<PathBuf> {
+    let exe = executable_name(tool_name);
+    let mut candidates = Vec::new();
+
+    if let Ok(path) = app
+        .path()
+        .resolve(format!("bin/{exe}"), BaseDirectory::Resource)
+    {
+        candidates.push(path);
+    }
+
+    if let Ok(path) = app
+        .path()
+        .resolve(format!("resources/bin/{exe}"), BaseDirectory::Resource)
+    {
+        candidates.push(path);
+    }
+
+    if let Ok(resource_dir) = app.path().resource_dir() {
+        candidates.push(resource_dir.join("bin").join(&exe));
+        candidates.push(resource_dir.join("resources").join("bin").join(&exe));
+    }
+
+    candidates
 }
 
 fn run_tool(app: &tauri::AppHandle, tool_name: &str, args: &[&str]) -> Result<Output, String> {
