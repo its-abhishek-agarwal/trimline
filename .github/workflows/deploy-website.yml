@@ -49,23 +49,10 @@ jobs:
           cp -r dist/assets pages-site/
           cp -r dist/website/* pages-site/website/ 2>/dev/null || true
           cp dist/website.html pages-site/website.html
+          cp dist/website/index.html pages-site/index.html
           cp dist/favicon.svg pages-site/favicon.svg
           cp dist/robots.txt pages-site/robots.txt
           cp dist/sitemap.xml pages-site/sitemap.xml
-          cat > pages-site/index.html << 'EOF'
-          <!doctype html>
-          <html lang="en">
-            <head>
-              <meta charset="UTF-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-              <meta http-equiv="refresh" content="0; url=./website/" />
-              <title>Redirecting to Trimline website</title>
-            </head>
-            <body>
-              <p>Redirecting to <a href="./website/">Trimline website</a>...</p>
-            </body>
-          </html>
-          EOF
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
