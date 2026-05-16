@@ -175,6 +175,10 @@ export function WebsiteApp() {
                   </span>
                 </a>
               </div>
+              <p className="hero-install-warning" role="note">
+                <strong>Installation warning:</strong> If Windows blocks install, right-click downloaded file -&gt;
+                Properties -&gt; check <strong>Unblock</strong> -&gt; Apply -&gt; run installer again.
+              </p>
             </div>
           </div>
 

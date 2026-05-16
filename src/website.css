@@ -227,6 +227,25 @@ body {
   margin-top: 28px;
 }
 
+.hero-install-warning {
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  max-width: 640px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 90, 43, 0.24);
+  background: rgba(255, 255, 255, 0.88);
+  color: #3f3f3f;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  box-shadow:
+    0 10px 20px rgba(255, 90, 43, 0.08),
+    inset 0 0 0 1px rgba(255, 90, 43, 0.04);
+}
+
+.hero-install-warning strong {
+  color: var(--site-accent-strong);
+}
+
 .download-button {
   min-width: 252px;
   padding: 12px 14px;
@@ -514,6 +533,12 @@ body {
   .hero-actions {
     justify-content: center;
   }
+
+  .hero-install-warning {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
 }
 
 @media (max-width: 720px) {
@@ -546,6 +571,10 @@ body {
   .hero-copy br,
   .support-section p br {
     display: none;
+  }
+
+  .hero-install-warning {
+    font-size: 0.84rem;
   }
 
   .hero-lines {
