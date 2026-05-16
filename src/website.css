@@ -215,8 +215,9 @@ body {
 .hero-copy {
   max-width: 640px;
   margin: 22px 0 0;
-  color: var(--site-muted);
+  color: #3a3a3a;
   font-size: 1rem;
+  font-weight: 700;
   line-height: 1.72;
 }
 
@@ -230,7 +231,8 @@ body {
 .hero-install-warning {
   margin: 14px 0 0;
   padding: 10px 12px;
-  max-width: 640px;
+  width: calc(252px * 2 + 28px);
+  max-width: 100%;
   border-radius: 12px;
   border: 1px solid rgba(255, 90, 43, 0.24);
   background: rgba(255, 255, 255, 0.88);
@@ -537,6 +539,7 @@ body {
   .hero-install-warning {
     margin-left: auto;
     margin-right: auto;
+    width: min(100%, calc(252px * 2 + 28px));
     text-align: left;
   }
 }
