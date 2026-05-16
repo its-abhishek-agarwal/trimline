@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "Trimline",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "identifier": "com.abhic.trimline",
   "build": {
     "frontendDist": "../dist",
@@ -42,8 +42,7 @@
     ],
     "windows": {
       "webviewInstallMode": {
-        "type": "skip",
-        "silent": true
+        "type": "skip"
       },
       "nsis": {
         "compression": "bzip2"
